@@ -24,7 +24,7 @@ let thingsToDo = {
 
 console.log(thingsToDo)
 
-//assign the first two values of object to some values: DESTRUCTURING OBJECT
+//assign the first two values of object to some values: DESTRUCTURING OBJECTC
 let {morning, afternoon} =  thingsToDo
 
 console.log(morning,' - ', afternoon)
