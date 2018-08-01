@@ -10,6 +10,9 @@ class App extends Component {
       users: [],
       loading: false
     }
+
+    // bindings
+    this.handleSubmit = this.handleSubmit.bind(this)
   }
 
   getUsers() {
@@ -19,9 +22,15 @@ class App extends Component {
     //Call to a API using axios
     axios('https://api.randomuser.me/?nat=US&results=5')
     .then((response) => this.setState({
-      users: response.data.results,
+      users: [...this.state.users, ...response.data.results],
       loading: false
     }))
+  }
+
+  handleSubmit(e) {
+    e.preventDefault()
+    this.getUsers()
+    console.log('more users loaded')
   }
 
   //just before the component mounts
@@ -37,7 +46,7 @@ class App extends Component {
           <h3>{user.name.first.split("").map((l, key) => key === 0 ? l.toUpperCase() : l)}</h3>
           Email is { user.email }
           <hr/>
-          <form>
+          <form onSubmit={this.handleSubmit}>
             <input type="submit" value="load Users"/>
           </form>
         </div>
