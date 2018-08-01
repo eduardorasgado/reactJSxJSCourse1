@@ -1,4 +1,5 @@
-import React, { Component } from 'react';
+import React, { Component } from 'react'
+import Loading from './Loading'
 import axios from 'axios'
 
 class App extends Component {
@@ -38,7 +39,7 @@ class App extends Component {
           <hr/>
         </div>
       )) 
-      : 'Loading'}
+      : (<Loading message="Users"/>)}
      </div>
     );
   }
