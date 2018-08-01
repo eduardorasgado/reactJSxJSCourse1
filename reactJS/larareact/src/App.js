@@ -37,6 +37,9 @@ class App extends Component {
           <h3>{user.name.first.split("").map((l, key) => key === 0 ? l.toUpperCase() : l)}</h3>
           Email is { user.email }
           <hr/>
+          <form>
+            <input type="submit" value="load Users"/>
+          </form>
         </div>
       )) 
       : (<Loading message="Users"/>)}
