@@ -38,17 +38,21 @@ class App extends Component {
     this.getUsers()
   }
   render() {
+    // destructuring
+    const {loading, users} = this.state
     return (
-     <div className="App">
-      { !this.state.loading ? 
-        this.state.users.map((user) => (
+      <div className="App">
+      <form onSubmit={this.handleSubmit}>
+        <input type="submit" value="Load more users"/>
+      </form>
+      <hr/>
+      { !loading ? 
+        users.map((user) => (
         <div key={user.id.value}>
-          <h3>{user.name.first.split("").map((l, key) => key === 0 ? l.toUpperCase() : l)}</h3>
+          <h3 style={{color: "red"}}
+            >{user.name.first.split("").map((l, key) => key === 0 ? l.toUpperCase() : l)}</h3>
           Email is { user.email }
           <hr/>
-          <form onSubmit={this.handleSubmit}>
-            <input type="submit" value="load Users"/>
-          </form>
         </div>
       )) 
       : (<Loading message="Users"/>)}
